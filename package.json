@@ -2,7 +2,7 @@
 	"name": "interactive-block-demo",
 	"version": "0.1.0",
 	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"author": "Jeffrey de Wit <jeffrey.dewit@gmail.com> (https://jeffreydewit.com/)",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
