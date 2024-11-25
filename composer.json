@@ -1,0 +1,29 @@
+{
+	"name": "cheffheid/interactive-block-demo",
+	"description": "Demo for a block that makes use of the interactivity api feature to query the OpenLibrary API.",
+	"version": "1.0.0",
+	"type": "wordpress-plugin",
+	"authors": [
+		{
+			"name": "Jeffrey de Wit",
+			"email": "jeffrey@webdevstudios.com"
+		}
+	],
+	"require": {},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.1",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+		"phpcompatibility/phpcompatibility-wp": "*"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"format": "phpcbf --report=summary,source",
+		"lint": "phpcs . --report=code",
+		"report": "phpcs --report=info",
+		"pot": "wp i18n make-pot . build/languages/ct.pot --exclude=node_modules,vendor,build --allow-root"
+	}
+}

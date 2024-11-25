@@ -1,0 +1,150 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ .wp-block-cheffism-interactive-block-demo {
+
+	.wp-block-ibd__input,
+	.wp-block-ibd__button,
+	.wp-block-ibd__inside-wrapper {
+		border-radius: 0;
+	}
+
+	.wp-block-ibd__inside-wrapper {
+		border: 2px solid rgba(0, 0, 0, 0);
+		border-color: var(--wp--preset--color--primary-200);
+		display: flex;
+		flex-wrap: nowrap;
+		max-width: 100%;
+		margin: auto;
+		padding: .625rem .875rem .625rem 0;
+		position: relative;
+
+		&:focus-within {
+			border-color: var(--wp--preset--color--blue-500);
+		}
+	}
+
+	.wp-block-ibd__input {
+		border: none;
+		margin: 0;
+		min-width: 3rem;
+		padding: 0 1rem;
+		flex-grow: 1;
+		text-decoration: unset;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.wp-block-ibd__button {
+		align-items: center;
+		display: flex;
+		height: 2.25rem;
+		justify-content: center;
+		margin-top: 0;
+		width: 2.25rem;
+
+		svg {
+			fill: currentColor; /* stylelint-disable-line */
+			transform: scaleX(-1);
+			min-height: 1.5rem;
+			min-width: 1.5rem;
+			vertical-align: text-bottom;
+		}
+	}
+
+	.wp-block-ibd__heading {
+		color: var(--wp--preset--color--primary-500);
+		font-size: var(--wp--preset--font-size--xl);
+		font-weight: 900;
+		margin-top: 3rem;
+	}
+
+	.wp-block-ibd__spinner {
+		display: none;
+		justify-content: center;
+		padding: 1rem 0;
+
+		.wp-block-ibd__spinner-icon {
+			border: 4px solid var(--wp--preset--color--grey-100);
+			border-top: 4px solid var(--wp--preset--color--primary-500);
+			border-radius: 50%; /* stylelint-disable-line */
+			display: block;
+			width: 2rem;
+			height: 2rem;
+			animation: spin 1s linear infinite;
+		}
+
+		&.loading {
+			display: flex;
+		}
+	}
+
+	.wp-block-ibd__noresults {
+		display: none;
+
+		&.show {
+			display: block;
+		}
+	}
+
+	.wp-block-ibd__search-results {
+		list-style: none;
+		margin-bottom: 0;
+		margin-top: 0;
+		max-width: 100%;
+		padding: 0;
+
+		.wp-block-ibd__search-result {
+			display: block;
+			margin: 0;
+			padding-top: 1.5rem;
+		}
+
+		.wp-block-ibd__search-result-header {
+			font-size: var(--wp--preset--font-size--l);
+			font-weight: 600;
+			margin-bottom: 0.75rem;
+			margin-top: 0;
+
+			a {
+				color: var(--wp--preset--color--primary-500);
+				text-decoration: none;
+
+				&:hover {
+					color: var(--wp--preset--color--blue-700);
+				}
+			}
+		}
+
+		.wp-block-ibd__search-results-text {
+			font-weight: 400;
+			font-size: var(--wp--preset--font-size--xs);
+			margin-bottom: 1.5rem;
+			margin-top: 0.75rem;
+			padding: 0;
+		}
+
+		.wp-block-ibd__search-result-separator {
+			border-color: var(--wp--preset--color--grey-200);
+			border-style: solid;
+			border-width: 1px 0 0;
+			margin-bottom: 0;
+		}
+
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

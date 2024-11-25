@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+	<description>Apply WordPress Coding Standards</description>
+
+	<!-- WordPress Core currently supports PHP 8.0+. -->
+	<config name="testVersion" value="8.0-"/>
+
+	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
+	<arg name="cache"/>
+
+	<!-- Strip the filepaths down to the relevant bit. -->
+	<arg name="basepath" value="./"/>
+
+	<!-- Check up to 20 files simultaneously. -->
+	<arg name="parallel" value="20"/>
+
+	<!-- Show sniff codes in all reports. -->
+	<arg value="ps"/>
+
+	<!-- Use WordPress "Extra" Coding Standards. -->
+	<rule ref="WordPress-Extra">
+		<!-- Allow array short syntax. -->
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
+	</rule>
+
+	<!-- Use WordPress "Docs" Coding Standards. -->
+	<rule ref="WordPress-Docs" />
+
+	<!-- Use WordPress PHP Compatibility. -->
+	<rule ref="PHPCompatibilityWP">
+		<include-pattern>*\.php$</include-pattern>
+	</rule>
+
+	<!-- Only sniff PHP files. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Only sniff the theme. -->
+	<file>./</file>
+
+	<!-- Don't sniff the following directories or file types. -->
+	<exclude-pattern>/build/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+</ruleset>
