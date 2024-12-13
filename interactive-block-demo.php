@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:       Interactive Block Demo
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Interactive Block Demo
  * Requires at least: 6.6
  * Requires PHP:      7.2
- * Version:           0.1.0
- * Author:            The WordPress Contributors
+ * Version:           1.1.0
+ * Author:            Jeffrey de Wit
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       interactive-block-demo

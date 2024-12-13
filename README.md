@@ -19,6 +19,13 @@ First release. Includes:
 - OpenLibrary endpoint and search handling (limited to 10 results).
 - Composer and PHPCS configuration.
 
+### 1.1.0
+
+Added some tweaks and updates to this. Like:
+
+- Use wp.a11y.speak() to announce the search result count for the keyword.
+- Include book cover, openlibrary work link, ebook access with icon.
+
 ## Future considerations
 
 I might come back and make this more useful. The original did not have any pagination (since its endpoint did not provide that option), and so adding that would make for a nice first improvement.
