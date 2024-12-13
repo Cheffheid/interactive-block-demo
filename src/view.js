@@ -18,21 +18,21 @@ const updateContext = async (keyword, context) => {
 			keyword: keyword,
 		};
 
-		const showData = await fetch(state.ajaxurl, {
+		const bookData = await fetch(state.ajaxurl, {
 			method: "post",
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: new URLSearchParams(requestData).toString(),
 		});
 
-		const showJSON = await showData.json();
+		const bookJSON = await bookData.json();
 
-		if (0 < showJSON.length) {
+		if (0 < bookJSON.length) {
 			context.hasResults = true;
-			context.books = showJSON;
+			context.books = bookJSON;
 
 			speak(
 				__(
-					`${showJSON.length} search results for ${keyword}`,
+					`${bookJSON.length} search results for ${keyword}`,
 					"interactive-block-demo",
 				),
 			);
