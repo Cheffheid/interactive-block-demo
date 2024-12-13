@@ -139,6 +139,25 @@
 			margin-bottom: 0;
 		}
 
+		.wp-block-ibd__search-result-ebook:not([hidden]) {
+			align-items: center;
+			display: flex;
+			gap: 0.5rem;
+		}
+
+		.wp-block-ibd__icon {
+			display: inline-block;
+			width: 1em;
+			height: 1em;
+			stroke-width: 0;
+			stroke: currentColor;
+			fill: currentColor;
+		}
+
+	}
+
+	.wp-block-ibd__icon-defs-only {
+		display: none;
 	}
 }
 

@@ -44,7 +44,7 @@ function connect_api( $query ) {
 			'q'      => rawurlencode( $query ),
 			'limit'  => 10,
 			'lang'   => 'en',
-			'fields' => 'key,title,author_name,first_publish_year,cover_i',
+			'fields' => 'key,title,author_name,first_publish_year,cover_i,ebook_access',
 		)
 	);
 
@@ -81,6 +81,8 @@ function format_results( $results ) {
 			'first_published' => $result->first_publish_year,
 			'cover'           => get_cover_url( $result->cover_i ),
 			'link'            => esc_url( sprintf( 'https://openlibrary.org/%s', $result->key ) ),
+			'has_ebook'       => 'no_ebook' !== $result->ebook_access && 'printdisabled' !== $result->ebook_access,
+			'ebook'           => $result->ebook_access,
 		);
 
 		$formatted_results[] = $formatted;
