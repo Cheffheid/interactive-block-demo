@@ -39,14 +39,15 @@ function get_ibd_results( $keyword ) {
  * @return array
  */
 function connect_api( $query ) {
-	$http_query  = http_build_query(
+	$http_query = http_build_query(
 		array(
 			'q'      => rawurlencode( $query ),
 			'limit'  => 10,
 			'lang'   => 'en',
-			'fields' => 'key,title,author_name,first_publish_year',
+			'fields' => 'key,title,author_name,first_publish_year,cover_i',
 		)
 	);
+
 	$request_url = 'https://openlibrary.org/search.json?' . $http_query;
 	$results     = wp_remote_get( $request_url );
 
@@ -72,17 +73,38 @@ function format_results( $results ) {
 	$result_docs  = $results_json->docs;
 
 	foreach ( $result_docs as $result ) {
+
 		$formatted = array(
 			'key'             => str_replace( '/works/', '', $result->key ),
 			'title'           => $result->title,
 			'author'          => $result->author_name,
 			'first_published' => $result->first_publish_year,
+			'cover'           => '',
 		);
+
+		if ( $result->cover_i ) {
+			$formatted['cover'] = get_cover_url( $result->cover_i );
+		}
 
 		$formatted_results[] = $formatted;
 	}
 
 	return $formatted_results;
+}
+
+/**
+ * Get the openlibrary cover image URL. Use responsibly. It won't check if it exists, and hotlinking is not great either.
+ *
+ * @param string $cover_id The cover ID as it is returned from the OpenLibrary API.
+ * @return string
+ */
+function get_cover_url( $cover_id = '' ) {
+
+	if ( ! $cover_id ) {
+		return '';
+	}
+
+	return esc_attr( "//covers.openlibrary.org/b/id/${cover_id}-M.jpg" );
 }
 
 /**

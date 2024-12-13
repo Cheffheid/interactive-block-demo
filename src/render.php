@@ -71,23 +71,25 @@ $context = array(
 		<ul class="wp-block-ibd__search-results" data-wp-bind--hidden="!state.displayResults">
 			<template data-wp-each--book="context.books" >
 				<li class="wp-block-ibd__search-result">
-					<h3 class="wp-block-ibd__search-result-header">
-						<span data-wp-text="context.book.title"></span>
-					</h3>
-					<div class="wp-block-ibd__search-result-text">
-						<p>
-							<template data-wp-each="context.book.author">
-								<span data-wp-text="context.item"></span><br />
-							</template>
-						</p>
-						<p>
-							<?php esc_html_e( 'First published: ', 'interactive-block-demo' ); ?>
-							<span data-wp-text="context.book.first_published"></span>
-						</p>
-
+					<img data-wp-bind--src="context.book.cover" alt="" class="wp-block-ibd__search-result-image" />
+					<div>
+						<h3 class="wp-block-ibd__search-result-header">
+							<span data-wp-text="context.book.title"></span>
+						</h3>
+						<div class="wp-block-ibd__search-result-text">
+							<p>
+								<template data-wp-each="context.book.author">
+									<span data-wp-text="context.item"></span><br />
+								</template>
+							</p>
+							<p>
+								<?php esc_html_e( 'First published: ', 'interactive-block-demo' ); ?>
+								<span data-wp-text="context.book.first_published"></span>
+							</p>
+						</div>
 					</div>
-					<hr class="wp-block-ibd__search-result-separator is-style-wide">
 				</li>
+				<hr class="wp-block-ibd__search-result-separator is-style-wide">
 			</template>
 		</ul>
 	</div>

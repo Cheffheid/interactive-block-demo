@@ -101,9 +101,20 @@
 		padding: 0;
 
 		.wp-block-ibd__search-result {
-			display: block;
+			align-items: flex-start;
+			display: flex;
+			gap: 1rem;
 			margin: 0;
 			padding-top: 1.5rem;
+
+			@media screen and (max-width: 600px) {
+				flex-direction: column-reverse;
+				padding: 1rem 0;
+			}
+		}
+
+		.wp-block-ibd__search-result-image {
+			min-width: 180px;
 		}
 
 		.wp-block-ibd__search-result-header {
