@@ -1,5 +1,8 @@
 import { store, getElement, getContext } from "@wordpress/interactivity";
 
+const { speak } = wp.a11y;
+const { __ } = wp.i18n;
+
 const isEmpty = (obj) =>
 	[Object, Array].includes((obj || {}).constructor) &&
 	!Object.entries(obj || {}).length;
@@ -26,6 +29,13 @@ const updateContext = async (keyword, context) => {
 		if (0 < showJSON.length) {
 			context.hasResults = true;
 			context.books = showJSON;
+
+			speak(
+				__(
+					`${showJSON.length} search results for ${keyword}`,
+					"interactive-block-demo",
+				),
+			);
 		}
 	}
 
