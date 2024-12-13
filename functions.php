@@ -79,12 +79,9 @@ function format_results( $results ) {
 			'title'           => $result->title,
 			'author'          => $result->author_name,
 			'first_published' => $result->first_publish_year,
-			'cover'           => '',
+			'cover'           => get_cover_url( $result->cover_i ),
+			'link'            => esc_url( sprintf( 'https://openlibrary.org/%s', $result->key ) ),
 		);
-
-		if ( $result->cover_i ) {
-			$formatted['cover'] = get_cover_url( $result->cover_i );
-		}
 
 		$formatted_results[] = $formatted;
 	}
