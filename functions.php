@@ -74,12 +74,16 @@ function format_results( $results ) {
 
 	foreach ( $result_docs as $result ) {
 
+		if ( ! isset( $result->author_name ) ) {
+			continue;
+		}
+
 		$formatted = array(
 			'key'             => str_replace( '/works/', '', $result->key ),
 			'title'           => $result->title,
 			'author'          => $result->author_name,
 			'first_published' => $result->first_publish_year,
-			'cover'           => get_cover_url( $result->cover_i ),
+			'cover'           => get_book_cover_url_from_result( $result ),
 			'link'            => esc_url( sprintf( 'https://openlibrary.org/%s', $result->key ) ),
 			'has_ebook'       => 'no_ebook' !== $result->ebook_access && 'printdisabled' !== $result->ebook_access,
 			'ebook'           => $result->ebook_access,
@@ -94,14 +98,16 @@ function format_results( $results ) {
 /**
  * Get the openlibrary cover image URL. Use responsibly. It won't check if it exists, and hotlinking is not great either.
  *
- * @param string $cover_id The cover ID as it is returned from the OpenLibrary API.
+ * @param object $work The work as a decoded JSON object.
  * @return string
  */
-function get_cover_url( $cover_id = '' ) {
+function get_book_cover_url_from_result( $work = null ) {
 
-	if ( ! $cover_id ) {
+	if ( ! $work || ! isset( $work->cover_i ) ) {
 		return '';
 	}
+
+	$cover_id = $work->cover_i;
 
 	return esc_attr( "//covers.openlibrary.org/b/id/${cover_id}-M.jpg" );
 }
