@@ -52,7 +52,7 @@ function connect_api( $query ) {
 	$results     = wp_remote_get( $request_url );
 
 	if ( is_wp_error( $results ) ) {
-		echo 'Error: ' . $results->get_error_message; // phpcs:ignore
+		echo 'Error: ' . $results->get_error_message(); // phpcs:ignore
 	}
 
 	set_transient( 'ibd_ol_search_results_' . $query, base64_encode( $results['body'] ), 15 * MINUTE_IN_SECONDS ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
