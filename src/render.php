@@ -71,7 +71,7 @@ $context = array(
 		<ul class="wp-block-ibd__search-results" data-wp-bind--hidden="!state.displayResults">
 			<template data-wp-each--book="context.books" >
 				<li class="wp-block-ibd__search-result">
-					<img data-wp-bind--src="context.book.cover" alt="" class="wp-block-ibd__search-result-image" />
+					<img data-wp-bind--src="context.book.cover" alt="" class="wp-block-ibd__search-result-image" data-wp-bind--hidden="!context.book.has_cover" />
 					<div>
 						<h3 class="wp-block-ibd__search-result-header">
 							<a data-wp-bind--href="context.book.link">

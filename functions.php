@@ -84,6 +84,7 @@ function format_results( $results ) {
 			'author'          => $result->author_name,
 			'first_published' => $result->first_publish_year,
 			'cover'           => get_book_cover_url_from_result( $result ),
+			'has_cover'       => isset( $result->cover_i ),
 			'link'            => esc_url( sprintf( 'https://openlibrary.org/%s', $result->key ) ),
 			'has_ebook'       => 'no_ebook' !== $result->ebook_access && 'printdisabled' !== $result->ebook_access,
 			'ebook'           => $result->ebook_access,
