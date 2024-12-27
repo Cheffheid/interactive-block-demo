@@ -95,7 +95,7 @@ $context = array(
 						</div>
 					</div>
 				</li>
-				<hr class="wp-block-ibd__search-result-separator is-style-wide">
+				<hr class="wp-block-ibd__search-result-separator">
 			</template>
 		</ul>
 	</div>
