@@ -5,9 +5,17 @@ It seemed reasonable to me to remove and convert that piece of the block into so
 
 And so this block example will make use of the OpenLibrary API to search and present some basic details about the works the API returns from the query.
 
-Otherwise, the general logic and functionality is the same. The main difference, since the amount of data is vastly different, is that the original version of the search would query for everything in the API and store that in a transient for 15 minutes. It would then use that data to filter based on the keyword.
+## Get Started
 
-For this example I have reworked that and stored the search results for a given query into a 15 minute transient instead.
+This block is packaged as a plugin, but you will need to run a few commands to actually get a build running for this after you download/clone it.
+
+From the root folder, you will want to run the following to get a build going and allow the block to function in WordPress:
+
+`npm i && npm run build`
+
+You're free to use npm alternatives if you want, it _shouldn't_ make that much of a difference if you do.
+
+If you wanted to make your own updates to this, you will need to either manually run `npm run build` after you're done or run `npm run start` so that it will automatically rebuild on file changes.
 
 ## Changelog
 
