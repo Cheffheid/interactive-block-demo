@@ -19,7 +19,7 @@ $keyword = isset( $_GET['keyword'] ) ? $_GET['keyword'] : '';
 wp_interactivity_state(
 	'interactivedemo',
 	array(
-		'keyword'   => $keyword,
+		'keyword'   => esc_attr( $keyword ),
 		'nonce'     => wp_create_nonce( 'ajax_nonce_ibd' ),
 		'ajaxurl'   => admin_url( 'admin-ajax.php' ),
 		'isLoading' => false,
