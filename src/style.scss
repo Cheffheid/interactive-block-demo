@@ -5,7 +5,7 @@
  * Replace them with your own styles or remove the file completely.
  */
 
- .wp-block-cheffism-interactive-block-demo {
+.wp-block-cheffism-interactive-block-demo {
 
 	.wp-block-ibd__input,
 	.wp-block-ibd__button,
@@ -14,17 +14,17 @@
 	}
 
 	.wp-block-ibd__inside-wrapper {
-		border: 2px solid rgba(0, 0, 0, 0);
-		border-color: var(--wp--preset--color--primary-200);
+		border: 2px solid rgba(0, 0, 0, 1);
+		border-color: var(--wp--preset--color--contrast);
 		display: flex;
 		flex-wrap: nowrap;
 		max-width: 100%;
 		margin: auto;
-		padding: .625rem .875rem .625rem 0;
+		padding: 0.625rem 0.875rem;
 		position: relative;
 
 		&:focus-within {
-			border-color: var(--wp--preset--color--blue-500);
+			border-color: var(--wp--preset--color--vivid-cyan-blue);
 		}
 	}
 
@@ -50,7 +50,7 @@
 		width: 2.25rem;
 
 		svg {
-			fill: currentColor; /* stylelint-disable-line */
+			fill: currentcolor;
 			transform: scaleX(-1);
 			min-height: 1.5rem;
 			min-width: 1.5rem;
@@ -105,7 +105,7 @@
 			display: flex;
 			gap: 1rem;
 			margin: 0;
-			padding-top: 1.5rem;
+			padding: 1.5rem 0;
 
 			@media screen and (max-width: 600px) {
 				flex-direction: column-reverse;
@@ -136,13 +136,14 @@
 			border-color: var(--wp--preset--color--grey-200);
 			border-style: solid;
 			border-width: 1px 0 0;
-			margin-bottom: 0;
+			margin: 0;
 		}
 
 		.wp-block-ibd__search-result-ebook:not([hidden]) {
 			align-items: center;
 			display: flex;
 			gap: 0.5rem;
+			margin-bottom: 1rem;
 		}
 
 		.wp-block-ibd__icon {
@@ -150,10 +151,16 @@
 			width: 1em;
 			height: 1em;
 			stroke-width: 0;
-			stroke: currentColor;
-			fill: currentColor;
+			stroke: currentcolor;
+			fill: currentcolor;
 		}
 
+		.wp-block-ibd__search-result-text {
+
+			p {
+				margin: 0;
+			}
+		}
 	}
 
 	.wp-block-ibd__icon-defs-only {
@@ -162,9 +169,11 @@
 }
 
 @keyframes spin {
+
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}

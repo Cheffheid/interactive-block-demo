@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-import { __ } from "@wordpress/i18n";
+import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps } from '@wordpress/block-editor';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -19,39 +19,35 @@ import { useBlockProps } from "@wordpress/block-editor";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#edit
  *
- * @param {Object}   props               Properties passed to the function.
- * @param {Object}   props.attributes    Available block attributes.
- * @param {Function} props.setAttributes Function that updates individual attributes.
- *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit() {
 	const blockProps = useBlockProps();
 
 	return (
-		<div {...blockProps}>
+		<div { ...blockProps }>
 			<div className="aligncenter">
 				<label
 					className="wp-block-ibd__label screen-reader-text"
-					for="wp-block-ibd__input"
+					htmlFor="wp-block-ibd__input"
 				>
-					{__("Search", "interactive-block-demo")}
+					{ __( 'Search', 'interactive-block-demo' ) }
 				</label>
 				<div className="wp-block-ibd__inside-wrapper">
 					<input
 						className="wp-block-ibd__input"
 						id="wp-block-ibd__input"
-						placeholder={__(
-							"Enter your search query",
-							"interactive-block-demo",
-						)}
+						placeholder={ __(
+							'Enter your search query',
+							'interactive-block-demo'
+						) }
 						value=""
 						type="search"
 						name="showname"
-						required=""
+						disabled
 					/>
 					<button
-						aria-label={__("Search", "interactive-block-demo")}
+						aria-label={ __( 'Search', 'interactive-block-demo' ) }
 						className="wp-block-ibd__button has-icon wp-element-button"
 						type="submit"
 					>
