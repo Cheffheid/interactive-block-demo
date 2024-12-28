@@ -133,3 +133,15 @@ function ajax_ibd_search_handler() {
 }
 add_action( 'wp_ajax_ibd_ajax_search_handler', __NAMESPACE__ . '\ajax_ibd_search_handler' );
 add_action( 'wp_ajax_nopriv_ibd_ajax_search_handler', __NAMESPACE__ . '\ajax_ibd_search_handler' );
+
+/**
+ * Interestingly, wp-a11y is not enqueued or recognized as a requirement of our view.js script module and needs to be enqueued manually.
+ * It would be more ideal if this is done when the block is actually on the page,
+ * but this is a tiny script that likely won't harm much in the vast majority of cases.
+ *
+ * @return void
+ */
+function enqueue_wpa11y_manually() {
+	wp_enqueue_script( 'wp-a11y' );
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_wpa11y_manually' );
