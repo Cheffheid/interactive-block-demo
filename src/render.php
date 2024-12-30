@@ -37,7 +37,7 @@ $context = array(
 	<?php echo wp_interactivity_data_wp_context( $context ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 >
 	<form role="search" class="aligncenter">
-		<label class="wp-block-ibd__label screen-reader-text" for="wp-block-ibd__input">
+		<label class="wp-block-ibd__label screen-reader-text" for="interactivedemo">
 			<?php esc_html_e( 'Search', 'interactive-block-demo' ); ?>
 		</label>
 		<div class="wp-block-ibd__inside-wrapper">
