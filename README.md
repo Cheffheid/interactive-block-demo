@@ -17,6 +17,12 @@ You're free to use npm alternatives if you want, it _shouldn't_ make that much o
 
 If you wanted to make your own updates to this, you will need to either manually run `npm run build` after you're done or run `npm run start` so that it will automatically rebuild on file changes.
 
+You will also need Composer to generate the necessary autoload file so that the plugin itself will run properly. Simply run either one of these commands:
+
+`composer install` if you also want any dev packages that I've saved to composer.json (like phpcs).
+
+`composer install --no-dev` if you just want to try out the plugin.
+
 ## Changelog
 
 ### 1.0.0
