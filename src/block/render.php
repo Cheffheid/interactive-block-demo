@@ -12,9 +12,10 @@
  * @package InteractiveBlockDemo
  */
 
-use function Cheffism\InteractiveBlockDemo\get_ibd_results;
+use Cheffism\InteractiveBlockDemo\Search;
 
-$keyword = isset( $_GET['keyword'] ) ? $_GET['keyword'] : '';
+$search_api = new Search();
+$keyword    = isset( $_GET['keyword'] ) ? $_GET['keyword'] : '';
 
 wp_interactivity_state(
 	'interactivedemo',
@@ -27,7 +28,7 @@ wp_interactivity_state(
 );
 
 $context = array(
-	'books' => get_ibd_results( $keyword ),
+	'books' => $search_api->get_ibd_results( $keyword ),
 );
 
 ?>
