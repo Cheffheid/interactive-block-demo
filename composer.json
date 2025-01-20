@@ -16,6 +16,11 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"phpcompatibility/phpcompatibility-wp": "*"
 	},
+	"autoload": {
+		"psr-4": {
+			"Cheffism\\InteractiveBlockDemo\\": "src/"
+		}
+	},
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
