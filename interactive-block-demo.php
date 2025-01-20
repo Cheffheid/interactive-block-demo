@@ -19,16 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-require plugin_dir_path( __FILE__ ) . 'functions.php';
-
-/**
- * Registers the block using the metadata loaded from the `block.json` file.
- * Behind the scenes, it registers also all assets so they can be enqueued
- * through the block editor in the corresponding context.
- *
- * @see https://developer.wordpress.org/reference/functions/register_block_type/
- */
-function block_init() {
-	register_block_type_from_metadata( __DIR__ . '/build' );
+if ( ! class_exists( Plugin::class ) && is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once __DIR__ . '/vendor/autoload.php';
 }
-add_action( 'init', __NAMESPACE__ . '\block_init' );
+
+if ( class_exists( Plugin::class ) ) {
+	$interactive_block_demo = new Plugin( plugin_dir_path( __FILE__ ) );
+	$interactive_block_demo->run();
+}
