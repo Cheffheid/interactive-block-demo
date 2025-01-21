@@ -20,6 +20,26 @@ class Search {
 	private $api;
 
 	/**
+	 * Instance variable.
+	 *
+	 * @var null|self
+	 */
+	private static $instance = null;
+
+	/**
+	 * Returns the singleton instance of this Search class.
+	 *
+	 * @return self
+	 */
+	public static function get_instance() {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
 	 * Initialize the API Connector when the Search is initialized.
 	 */
 	public function __construct() {
