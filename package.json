@@ -6,13 +6,13 @@
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-		"build": "wp-scripts build --experimental-modules",
+		"build": "wp-scripts build --experimental-modules --webpack-src-dir=./assets",
 		"format": "wp-scripts format",
-		"lint:css": "wp-scripts lint-style './src/*.scss'",
-		"lint:js": "wp-scripts lint-js ./src",
+		"lint:css": "wp-scripts lint-style './assets/**/*.scss'",
+		"lint:js": "wp-scripts lint-js ./assets/**",
 		"packages-update": "wp-scripts packages-update",
 		"plugin-zip": "wp-scripts plugin-zip",
-		"start": "wp-scripts start --experimental-modules"
+		"start": "wp-scripts start --experimental-modules --webpack-src-dir=./assets"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.7.0"
