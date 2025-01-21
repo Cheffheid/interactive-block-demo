@@ -14,7 +14,7 @@
 
 use Cheffism\InteractiveBlockDemo\Search;
 
-$keyword = isset( $_GET['keyword'] ) ? $_GET['keyword'] : '';
+$keyword = isset( $_GET['keyword'] ) ? $_GET['keyword'] : ''; // phpcs:ignore WordPress.Security.NonceVerification
 
 wp_interactivity_state(
 	'interactivedemo',
