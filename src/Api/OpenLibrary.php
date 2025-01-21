@@ -30,7 +30,7 @@ class OpenLibrary extends ApiConnector {
 	 * API search entry function. Expects a keyword string to search for.
 	 *
 	 * @param string $keyword Keyword for the search.
-	 * @return array
+	 * @return array<mixed>
 	 */
 	public function get_results( $keyword = '' ) {
 		$this->keyword = $keyword;
@@ -38,7 +38,7 @@ class OpenLibrary extends ApiConnector {
 		$api_results = get_transient( 'ibd_ol_search_results_' . $keyword );
 
 		if ( ! $api_results ) {
-			$api_results = $this->connect_api( $keyword );
+			$api_results = $this->connect_api();
 		} else {
 			$api_results = base64_decode( $api_results ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 		}
@@ -49,9 +49,9 @@ class OpenLibrary extends ApiConnector {
 	/**
 	 * Make a request of the API. Rewritten to use wp_remote_get (was using curl before).
 	 *
-	 * @return array
+	 * @return string
 	 */
-	private function connect_api() {
+	protected function connect_api() {
 		$http_query = http_build_query(
 			array(
 				'q'      => rawurlencode( $this->keyword ),
@@ -65,7 +65,7 @@ class OpenLibrary extends ApiConnector {
 		$results     = wp_remote_get( $request_url );
 
 		if ( is_wp_error( $results ) ) {
-			echo 'Error: ' . $results->get_error_message(); // phpcs:ignore
+			return 'Error: ' . $results->get_error_message();
 		}
 
 		set_transient( 'ibd_ol_search_results_' . $this->keyword, base64_encode( $results['body'] ), 15 * MINUTE_IN_SECONDS ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
@@ -77,7 +77,7 @@ class OpenLibrary extends ApiConnector {
 	 * Format the show data.
 	 *
 	 * @param string $results Array of shows that needs its data formatted.
-	 * @return array Formatted show data.
+	 * @return array<mixed> Formatted show data.
 	 */
 	private function format_results( $results ) {
 		$formatted_results = array();

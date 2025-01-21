@@ -20,18 +20,24 @@ abstract class ApiConnector {
 	private $endpoint;
 
 	/**
+	 * Search keyword.
+	 *
+	 * @var string
+	 */
+	private $keyword;
+
+	/**
 	 * Handles the results logic, including any caching you want to include.
 	 *
 	 * @param string $keyword Search keyword.
-	 * @return void
+	 * @return array<mixed>
 	 */
 	abstract public function get_results( $keyword = '' );
 
 	/**
 	 * Runs a search on the API endpoint.
 	 *
-	 * @param string $keyword Search keyword.
-	 * @return void
+	 * @return string
 	 */
-	abstract protected function connect_api( $keyword = '' );
+	abstract protected function connect_api();
 }

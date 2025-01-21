@@ -77,9 +77,11 @@ class Search {
 	 *
 	 * @author Jeffrey de Wit
 	 * @since October 17, 2024
+	 *
+	 * @return never
 	 */
 	public function ajax_ibd_search_handler() {
-		if ( ! check_ajax_referer( 'ajax_nonce_ibd', 'nonce', false ) ) {
+		if ( false === check_ajax_referer( 'ajax_nonce_ibd', 'nonce' ) ) {
 			wp_send_json( '{}', 403 );
 			die;
 		}
