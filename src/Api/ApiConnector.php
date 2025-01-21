@@ -10,7 +10,7 @@ namespace Cheffism\InteractiveBlockDemo\Api;
 /**
  * Base class definition for API endpoints.
  */
-class ApiConnector {
+abstract class ApiConnector {
 
 	/**
 	 * API endpoint.
@@ -25,8 +25,7 @@ class ApiConnector {
 	 * @param string $keyword Search keyword.
 	 * @return void
 	 */
-	public function get_results( $keyword = '' ) {
-	}
+	abstract public function get_results( $keyword = '' );
 
 	/**
 	 * Runs a search on the API endpoint.
@@ -34,6 +33,5 @@ class ApiConnector {
 	 * @param string $keyword Search keyword.
 	 * @return void
 	 */
-	private function connect_api( $keyword = '' ) {
-	}
+	abstract protected function connect_api( $keyword = '' );
 }
