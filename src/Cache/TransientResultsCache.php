@@ -27,7 +27,7 @@ class TransientResultsCache {
 	private int $transient_expiration = 15 * MINUTE_IN_SECONDS;
 
 	/**
-	 * Undocumented function
+	 * Class constructor. Stores the transient prefix to the instance.
 	 *
 	 * @param string $transient_prefix Set a custom transient name.
 	 */
@@ -36,7 +36,7 @@ class TransientResultsCache {
 	}
 
 	/**
-	 * Undocumented function
+	 * Get the cached results for the provided search keyword.
 	 *
 	 * @param string $keyword Keyword the search was for, to help distinguish the transient.
 	 * @return string
@@ -48,7 +48,7 @@ class TransientResultsCache {
 	}
 
 	/**
-	 * Undocumented function
+	 * Store the results into a transient.
 	 *
 	 * @param string $transient Transient suffix (likely to be search keyword).
 	 * @param string $results Results that need to be stored in the transient.
