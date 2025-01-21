@@ -52,8 +52,8 @@ class Search {
 	 * @return void
 	 */
 	public function init(): void {
-		add_action( 'wp_ajax_ibd_ajax_search_handler', array( $this, 'ajax_ibd_search_handler' ) );
-		add_action( 'wp_ajax_nopriv_ibd_ajax_search_handler', array( $this, 'ajax_ibd_search_handler' ) );
+		add_action( 'wp_ajax_ibd_ajax_search_handler', array( $this, 'ajax_ibd_search_handler' ), 10, 0 );
+		add_action( 'wp_ajax_nopriv_ibd_ajax_search_handler', array( $this, 'ajax_ibd_search_handler' ), 10, 0 );
 	}
 
 	/**

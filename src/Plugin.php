@@ -64,8 +64,8 @@ final class Plugin {
 	 * @return void
 	 */
 	public function init(): void {
-		add_action( 'init', array( $this, 'register_block' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_wpa11y_manually' ) );
+		add_action( 'init', array( $this, 'register_block' ), 10, 0 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_wpa11y_manually' ), 10, 0 );
 
 		Search::get_instance()->init();
 	}
