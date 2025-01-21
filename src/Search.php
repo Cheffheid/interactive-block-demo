@@ -20,6 +20,13 @@ class Search {
 	private $api;
 
 	/**
+	 * The caching mechanism used for the search.
+	 *
+	 * @var Cache\TransientResultsCache
+	 */
+	private $cache;
+
+	/**
 	 * Instance variable.
 	 *
 	 * @var null|self
@@ -43,7 +50,8 @@ class Search {
 	 * Initialize the API Connector when the Search is initialized.
 	 */
 	public function __construct() {
-		$this->api = new Api\OpenLibrary();
+		$this->api   = new Api\OpenLibrary();
+		$this->cache = new Cache\TransientResultsCache();
 	}
 
 	/**
@@ -62,14 +70,24 @@ class Search {
 	 * And then it will use the provided keyword to filter the shows from the API and return them.
 	 *
 	 * @param string $keyword Keyword to use as the search query.
-	 * @return array
+	 * @return array<string, mixed>
 	 */
 	public function get_ibd_results( $keyword ): array {
 		if ( empty( $keyword ) ) {
 			return array();
 		}
 
-		return $this->api->get_results( $keyword );
+		$search_results = $this->cache->get_cached_results( $keyword );
+
+		if ( ! $search_results ) {
+			$search_results = $this->api->get_results( $keyword );
+
+			$this->cache->set_cached_results( $keyword, $search_results );
+
+			$search_results = $this->api->format_results( $search_results );
+		}
+
+		return $search_results;
 	}
 
 	/**

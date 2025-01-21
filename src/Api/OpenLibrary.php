@@ -30,20 +30,14 @@ class OpenLibrary extends ApiConnector {
 	 * API search entry function. Expects a keyword string to search for.
 	 *
 	 * @param string $keyword Keyword for the search.
-	 * @return array<mixed>
+	 * @return string
 	 */
-	public function get_results( $keyword = '' ) {
+	public function get_results( $keyword = '' ): string {
 		$this->keyword = $keyword;
 
-		$api_results = get_transient( 'ibd_ol_search_results_' . $keyword );
+		$api_results = $this->connect_api();
 
-		if ( ! $api_results ) {
-			$api_results = $this->connect_api();
-		} else {
-			$api_results = base64_decode( $api_results ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
-		}
-
-		return $this->format_results( $api_results );
+		return $api_results;
 	}
 
 	/**
@@ -68,8 +62,6 @@ class OpenLibrary extends ApiConnector {
 			return 'Error: ' . $results->get_error_message();
 		}
 
-		set_transient( 'ibd_ol_search_results_' . $this->keyword, base64_encode( $results['body'] ), 15 * MINUTE_IN_SECONDS ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
-
 		return $results['body'];
 	}
 
@@ -79,11 +71,12 @@ class OpenLibrary extends ApiConnector {
 	 * @param string $results Array of shows that needs its data formatted.
 	 * @return array<mixed> Formatted show data.
 	 */
-	private function format_results( $results ) {
+	public function format_results( $results ) {
 		$formatted_results = array();
 
 		$results_json = json_decode( $results );
-		$result_docs  = $results_json->docs;
+
+		$result_docs = $results_json->docs;
 
 		foreach ( $result_docs as $result ) {
 

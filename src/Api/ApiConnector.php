@@ -16,7 +16,7 @@ abstract class ApiConnector {
 	 * Also expected to handle the results logic, including any caching you may want to include.
 	 *
 	 * @param string $keyword Search keyword.
-	 * @return array<mixed>
+	 * @return string
 	 */
 	abstract public function get_results( $keyword = '' );
 
@@ -26,4 +26,12 @@ abstract class ApiConnector {
 	 * @return string
 	 */
 	abstract protected function connect_api();
+
+	/**
+	 * Formats the results into a consistent form, so that it matches render.
+	 *
+	 * @param string $results API results object.
+	 * @return array<mixed>
+	 */
+	abstract public function format_results( $results );
 }
