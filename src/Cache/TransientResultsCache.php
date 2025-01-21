@@ -44,7 +44,7 @@ class TransientResultsCache {
 	public function get_cached_results( string $keyword = '' ): string {
 		$cached_results = get_transient( $this->transient_prefix . $keyword );
 
-		return $cached_results ? base64_decode( $cached_results ) : '';
+		return $cached_results ? base64_decode( $cached_results ) : ''; // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 	}
 
 	/**
