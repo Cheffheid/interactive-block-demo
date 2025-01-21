@@ -10,11 +10,12 @@
 			"homepage": "https://jeffreydewit.com/"
 		}
 	],
-	"require": {},
 	"require-dev": {
 		"wp-coding-standards/wpcs": "^3.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-		"phpcompatibility/phpcompatibility-wp": "*"
+		"phpcompatibility/phpcompatibility-wp": "*",
+		"vimeo/psalm": "^5.26",
+		"humanmade/psalm-plugin-wordpress": "^3.1"
 	},
 	"autoload": {
 		"psr-4": {
@@ -28,8 +29,9 @@
 	},
 	"scripts": {
 		"format": "phpcbf --report=summary,source",
-		"lint": "phpcs . --report=code",
-		"report": "phpcs --report=info",
+		"phpcs:lint": "phpcs . --report=code",
+		"phpcs:report": "phpcs --report=info",
+		"psalm": "psalm",
 		"pot": "wp i18n make-pot . build/languages/ct.pot --exclude=node_modules,vendor,build --allow-root"
 	}
 }
