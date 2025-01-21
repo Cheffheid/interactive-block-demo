@@ -39,7 +39,7 @@ class Plugin {
 		add_action( 'init', array( $this, 'block_init' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_wpa11y_manually' ) );
 
-		$search = new \Cheffism\InteractiveBlockDemo\Search();
+		$search = new Search();
 		$search->init();
 	}
 
