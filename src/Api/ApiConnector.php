@@ -11,23 +11,9 @@ namespace Cheffism\InteractiveBlockDemo\Api;
  * Base class definition for API endpoints.
  */
 abstract class ApiConnector {
-
 	/**
-	 * API endpoint.
-	 *
-	 * @var string
-	 */
-	private $endpoint;
-
-	/**
-	 * Search keyword.
-	 *
-	 * @var string
-	 */
-	private $keyword;
-
-	/**
-	 * Handles the results logic, including any caching you want to include.
+	 * API search entry function. Expects a keyword string to search for.
+	 * Also expected to handle the results logic, including any caching you may want to include.
 	 *
 	 * @param string $keyword Search keyword.
 	 * @return array<mixed>
@@ -35,7 +21,7 @@ abstract class ApiConnector {
 	abstract public function get_results( $keyword = '' );
 
 	/**
-	 * Runs a search on the API endpoint.
+	 * Make a request of the API. Expected to be called from the get_results method.
 	 *
 	 * @return string
 	 */
