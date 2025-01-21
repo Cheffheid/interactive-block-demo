@@ -75,6 +75,8 @@ class Search {
 	/**
 	 * Query the FOL API with a keyword and return formatted data for the block to display search results.
 	 *
+	 * @psalm-suppress PossiblyInvalidCast, PossiblyInvalidArgument
+	 *
 	 * @author Jeffrey de Wit
 	 * @since October 17, 2024
 	 *
@@ -86,7 +88,9 @@ class Search {
 			die;
 		}
 
-		$results = $this->get_ibd_results( $_POST['keyword'] );
+		$keyword = sanitize_text_field( wp_unslash( $_POST['keyword'] ?? '' ) );
+
+		$results = $this->get_ibd_results( $keyword );
 
 		wp_send_json( $results, 200 );
 
