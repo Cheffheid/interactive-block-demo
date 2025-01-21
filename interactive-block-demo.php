@@ -24,5 +24,5 @@ if ( ! class_exists( Plugin::class ) && is_readable( __DIR__ . '/vendor/autoload
 }
 
 if ( class_exists( Plugin::class ) ) {
-	$interactive_block_demo = Plugin::get_instance( plugin_dir_path( __FILE__ ) )->init();
+	Plugin::get_instance( plugin_dir_path( __FILE__ ) )->init();
 }
