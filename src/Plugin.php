@@ -24,7 +24,7 @@ final class Plugin {
 	/**
 	 * Instance variable.
 	 *
-	 * @var null|Plugin
+	 * @var null|self
 	 */
 	private static $instance = null;
 
@@ -39,7 +39,7 @@ final class Plugin {
 	 * Returns the singleton instance of this Plugin class.
 	 *
 	 * @param string $basename Plugin root folder name.
-	 * @return Plugin
+	 * @return self
 	 */
 	public static function get_instance( $basename = '' ) {
 		if ( is_null( self::$instance ) ) {
@@ -67,8 +67,7 @@ final class Plugin {
 		add_action( 'init', array( $this, 'register_block' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_wpa11y_manually' ) );
 
-		$search = new Search();
-		$search->init();
+		Search::get_instance()->init();
 	}
 
 	/**
