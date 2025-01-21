@@ -12,7 +12,7 @@ use Cheffism\InteractiveBlockDemo\Search;
 /**
  * Class for plugin specific functionality and WordPress hooks.
  */
-class Plugin {
+final class Plugin {
 
 	/**
 	 * Plugin root folder name.
@@ -22,11 +22,39 @@ class Plugin {
 	private string $basename;
 
 	/**
+	 * Instance variable.
+	 *
+	 * @var null|Plugin
+	 */
+	private static $instance = null;
+
+	/**
+	 * Private clone method to prevent cloning of the instance of this class.
+	 *
+	 * @return void
+	 */
+	private function __clone() {}
+
+	/**
+	 * Returns the singleton instance of this Plugin class.
+	 *
+	 * @param string $basename Plugin root folder name.
+	 * @return Plugin
+	 */
+	public static function get_instance( $basename = '' ) {
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self( $basename );
+		}
+
+		return self::$instance;
+	}
+
+	/**
 	 * Set the basename variable on initialization.
 	 *
 	 * @param string $basename Plugin directory path string.
 	 */
-	public function __construct( $basename = '' ) {
+	private function __construct( $basename = '' ) {
 		$this->basename = $basename;
 	}
 
@@ -35,8 +63,8 @@ class Plugin {
 	 *
 	 * @return void
 	 */
-	public function run(): void {
-		add_action( 'init', array( $this, 'block_init' ) );
+	public function init(): void {
+		add_action( 'init', array( $this, 'register_block' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_wpa11y_manually' ) );
 
 		$search = new Search();
@@ -50,8 +78,8 @@ class Plugin {
 	 *
 	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
 	 */
-	public function block_init(): void {
-		register_block_type_from_metadata( plugin_dir_path( __FILE__ ) . '/../build/block' );
+	public function register_block(): void {
+		register_block_type_from_metadata( $this->basename . '/build/block' );
 	}
 
 	/**
