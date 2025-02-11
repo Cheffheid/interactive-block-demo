@@ -69,7 +69,7 @@ class OpenLibrary extends ApiConnector {
 	 * Format the show data.
 	 *
 	 * @param string $results Array of shows that needs its data formatted.
-	 * @return array<mixed> Formatted show data.
+	 * @return array<array<string, mixed>> Formatted show data.
 	 */
 	public function format_results( $results ) {
 		$formatted_results = array();

@@ -31,7 +31,7 @@ abstract class ApiConnector {
 	 * Formats the results into a consistent form, so that it matches render.
 	 *
 	 * @param string $results API results object.
-	 * @return array<mixed>
+	 * @return array<array<string, mixed>>
 	 */
 	abstract public function format_results( $results );
 }
