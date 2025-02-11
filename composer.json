@@ -14,8 +14,9 @@
 		"wp-coding-standards/wpcs": "^3.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"phpcompatibility/phpcompatibility-wp": "*",
-		"vimeo/psalm": "^5.26",
-		"humanmade/psalm-plugin-wordpress": "^3.1"
+		"phpstan/phpstan": "^2.1",
+		"szepeviktor/phpstan-wordpress": "^2.0",
+		"phpstan/extension-installer": "^1.4"
 	},
 	"autoload": {
 		"psr-4": {
@@ -24,14 +25,15 @@
 	},
 	"config": {
 		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true
 		}
 	},
 	"scripts": {
 		"format": "phpcbf --report=summary,source",
 		"phpcs:lint": "phpcs . --report=code",
 		"phpcs:report": "phpcs --report=info",
-		"psalm": "psalm",
+		"phpstan": "phpstan analyse --memory-limit=2048M",
 		"pot": "wp i18n make-pot . build/languages/ct.pot --exclude=node_modules,vendor,build --allow-root"
 	}
 }

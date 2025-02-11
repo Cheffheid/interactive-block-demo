@@ -1,0 +1,8 @@
+parameters:
+  level: 8
+  paths:
+    - src/
+  ignoreErrors:
+    -
+      identifier: property.notFound
+      path: src/Api/OpenLibrary.php
