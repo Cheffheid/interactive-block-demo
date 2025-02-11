@@ -50,11 +50,11 @@ class TransientResultsCache {
 	/**
 	 * Store the results into a transient.
 	 *
-	 * @param string $transient Transient suffix (likely to be search keyword).
 	 * @param string $results Results that need to be stored in the transient.
+	 * @param string $transient Transient suffix (likely to be search keyword).
 	 * @return boolean
 	 */
-	public function set_cached_results( string $transient = '', string $results ): bool {
+	public function set_cached_results( string $results, string $transient = '' ): bool {
 		return set_transient( $this->transient_prefix . $transient, base64_encode( $results ), $this->transient_expiration ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 	}
 }

@@ -82,10 +82,10 @@ class Search {
 		if ( ! $search_results ) {
 			$search_results = $this->api->get_results( $keyword );
 
-			$this->cache->set_cached_results( $keyword, $search_results );
-
-			$search_results = $this->api->format_results( $search_results );
+			$this->cache->set_cached_results( $search_results, $keyword );
 		}
+
+		$search_results = $this->api->format_results( $search_results );
 
 		return $search_results;
 	}
@@ -103,7 +103,6 @@ class Search {
 	public function ajax_ibd_search_handler() {
 		if ( false === check_ajax_referer( 'ajax_nonce_ibd', 'nonce' ) ) {
 			wp_send_json( '{}', 403 );
-			die;
 		}
 
 		$keyword = sanitize_text_field( wp_unslash( $_POST['keyword'] ?? '' ) );
@@ -111,7 +110,5 @@ class Search {
 		$results = $this->get_ibd_results( $keyword );
 
 		wp_send_json( $results, 200 );
-
-		wp_die();
 	}
 }
