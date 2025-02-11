@@ -4,7 +4,7 @@
  * Description:       Interactive Block Demo
  * Requires at least: 6.6
  * Requires PHP:      7.2
- * Version:           1.1.0
+ * Version:           2.0.0
  * Author:            Jeffrey de Wit
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

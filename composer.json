@@ -1,7 +1,7 @@
 {
 	"name": "cheffheid/interactive-block-demo",
 	"description": "Demo for a block that makes use of the interactivity api feature to query the OpenLibrary API.",
-	"version": "1.1.0",
+	"version": "2.0.0",
 	"type": "wordpress-plugin",
 	"authors": [
 		{
